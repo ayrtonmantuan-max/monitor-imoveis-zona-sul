@@ -1,22 +1,26 @@
-# Monitor de Imóveis — Zona Sul
+# Sites Worker ESM starter
 
-Painel privado para acompanhar apartamentos à venda em Copacabana, Ipanema e Leblon, reunindo anúncios de imobiliárias locais.
+Use this starter for a static microsite, click counter, or simple internal UI whose state is browser-scoped. It has no dependencies and needs no install.
 
-## Critérios
+Edit `worker/index.js`. Use the Sites checkpoint when a coherent milestone is ready to inspect or share; the remote builder then runs the checked-in build and validation scripts. Do not run them as a normal pre-checkpoint step.
 
-- 90–130 m²
-- 3 quartos
-- 2 ou mais banheiros
-- 1 ou mais vagas
-- condomínio de até R$ 2.000
+The build copies only `worker/index.js` and `.openai/hosting.json`. Do not add standalone asset files. Embed any essential raster bytes in `worker/index.js` and serve or reference them as a data URL.
 
-## Recursos
+For targeted diagnosis after a remote build failure, the same commands are available in the Sites Linux environment:
 
-- abas por região e filtro por rua
-- ordenação por preço/m², preço total ou área
-- destaques clicáveis
-- identificação de anúncios novos
-- termômetros de preço/m² e condomínio
-- tratamento especial para imóveis reformados
+```sh
+bash scripts/build.sh
+node scripts/validate-artifact.mjs
+```
 
-O aplicativo usa um Cloudflare Worker compatível com ChatGPT Sites. O ponto de entrada é `worker/index.js`.
+The deterministic build produces:
+
+```text
+dist/
+├── .openai/
+│   └── hosting.json
+└── server/
+    └── index.js
+```
+
+`dist/server/index.js` is an ES module with a default export containing `fetch(request, env, ctx)`. Edit `worker/index.js`, not the generated file under `dist/`.
