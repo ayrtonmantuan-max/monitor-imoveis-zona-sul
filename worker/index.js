@@ -1,3 +1,4 @@
+// Monitor v25 restaurado: publicação solicitada em 2026-10-08.
 // Monitor v6: histórico local de novidades e destaque reforçado para reforma completa.
 const SOURCES=[
  {id:'dna',name:'DNA Imóveis',origin:'https://www.dnaimoveis.rio.br',color:'#ef6c3b',kind:'midas'},
